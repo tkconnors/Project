@@ -7,7 +7,7 @@ from Spectra_header import Spectra_header
 
 from astropy.io import fits
 
-default_data_folder = "/Users/tspyo/SciCoder-2019-Keck/Data Files/spectra/"
+default_data_folder = "../spectra/"
 
 parser = argparse.ArgumentParser(description="This program shows HDU information for FITS file",
                          usage="name_of_script --folder_path <your_data_path>",
