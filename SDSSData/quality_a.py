@@ -30,23 +30,27 @@ print(data_folder)
 
 print("#---fits file---EXPTIME(s)---WINDS(GUSTS)---HUMIDITY(%)#")
 for filename in os.listdir(data_folder) :
-    if filename.endswith(".fits"):
-        fits_file = data_folder + filename
-        #print(f"Fits file = {filename}")
-        fits_header = Spectra_header(fits_file)
-        f_exptime = fits_header.get_exptime()
-        f_windspeed = fits_header.get_windspeed()
-        f_gustspeed = fits_header.get_gustspeed()
-        f_humidity = fits_header.get_humidity()
-        print(f"{filename}: {f_exptime} s, {f_windspeed}({f_gustspeed}), {f_humidity}")
-        if (f_windspeed == None):
-        	print ("!!!Warning !!!! No windspeed information")    
-        	print ("\n")
-  	
-        elif (float(f_windspeed) > 10.) : 
-        	print(f"!!!! Wind speed is so fast = {f_windspeed} !!!!")
-        	print("\n")
-        	
+	if filename.endswith(".fits"):
+		fits_file = data_folder + filename
+		#print(f"Fits file = {filename}")
+		fits_header = Spectra_header(fits_file)
+		f_exptime = fits_header.get_exptime()
+		f_windspeed = fits_header.get_windspeed()
+		f_gustspeed = fits_header.get_gustspeed()
+		f_humidity = fits_header.get_humidity()
+		print(f"{filename}: {f_exptime} s, {f_windspeed}({f_gustspeed}), {f_humidity}")
+		if (f_windspeed == None):
+			print ("!!!Warning !!!! No windspeed information")
+			print("\n")
+		elif (float(f_windspeed) > 10.):
+			print(f"!!!! Wind speed is so fast = {f_windspeed} !!!!")
+			print("\n")
+		if(f_humidity == None):
+			print("!!!Warning !!!! No Humidity information")
+			print("\n")
+		elif (float(f_humidity) > 70.):
+			print(f"!!!! High Humidity condition = {f_humidity}% !!!!")
+			print("\n")
         
         
 
