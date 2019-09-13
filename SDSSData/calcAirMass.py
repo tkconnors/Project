@@ -14,8 +14,8 @@ for file in os.listdir(location) :
 		dataHead = Spectra_header(file)
 		declination = dataHead.get_dec()
 		if declination is not None:
-			rad = (declination/180) * math.pi
-			airMass = 1.0 / math.sin(declination * math.pi/180)
-			print ("Air mass for declination %3.9f deg. = %3.9f\n" % (declination, airMass))
+			rad = math.radians(90.0 - declination)
+			airMass = 1.0 / math.cos(rad)
+			print ("Approximate air mass for declination %3.9f deg. = %3.9f\n" % (declination, airMass))
 		else:
 			print ("No declination information: cannot calculate air mass for %s" % file)
